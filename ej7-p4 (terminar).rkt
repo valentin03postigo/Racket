@@ -1,17 +1,20 @@
 (require 2htdp/image)
 (require 2htdp/universe)
 
-(define ANCHO 800)
-(define ALTO 200)
-(define AUTO (rectangle 90 50 "solid" "red"))
-(define ESCENA (empty-scene ANCHO ALTO))
+(define AUTO .)
+(define ANCHO_AUTO (image-width AUTO))
+(define ALTO_AUTO (image-height AUTO))
+
+(define ANCHO_ESCENA 800)
+(define ALTO_ESCENA 200)
+(define ESCENA (empty-scene ANCHO_ESCENA ALTO_ESCENA))
 
 ;AUTO es (Number, Number)
 ;Interpretacion: El primer elemento es la posicion horizontal del auto,
 ;mientras que el segundo representa la velocidad expresada en pixeles sobre tick.
-(define-struct VARS [hpos vel])
+(define-struct Auto [hpos vel])
 
-(define DELTA-VEL 10)
+(define TICK_MOVE 3) ;Cantidad de pixeles que se mueve el auto por tick.
 
 (define INICIAL (make-VARS 50 3))
 
@@ -44,4 +47,3 @@
   [on-key KEY-CONTROLER]
   ;[on-mouse DIRECTOR]
   )
-
